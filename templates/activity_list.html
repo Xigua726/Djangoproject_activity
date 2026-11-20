@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="'en">
+<head>
+    <meta charset="UTF-8">
+    <title>社团活动</title>
+</head>
+<body>
+    <h1>社团活动</h1>
+
+    <form method="get">
+        <input type="text" name="q" value="{{ q }}" placeholder="按标题搜索">
+        <button type='submit'>搜索</button>
+        {% if q %}<a href="{% url 'index' %}">清除</a>
+        {% endif %}
+    </form>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'add' %}">添加活动</a>
+        <a href="{% url 'logout' %}">退出</a>
+    {% else %}
+        <a href="{% url 'login' %}">登录</a>
+        <a href="{% url 'register' %}">注册</a>
+    {% endif %}
+
+    {% for activity in activities %}
+        <div>
+            <h2>{{ activity.title }}</h2>
+            <p>{{ activity.start_time }} - {{ activity.location }}</p>
+            <p>{{ activity.description }}</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'edit' activity.pk %}">编辑</a>
+            <a href="{% url 'delete' activity.pk %}">删除</a>
+        {% endif %}
+        </div>
+    {% empty %}
+        <p>暂时还没有活动</p>
+{% endfor %}
+</body>
+</html>
