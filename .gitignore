@@ -1,0 +1,46 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ===== 虚拟环境（59MB，绝对不能提交）=====
+.venv/
+venv/
+env/
+ENV/
+
+# ===== Django =====
+db.sqlite3
+db.sqlite3-journal
+*.log
+local_settings.py
+/staticfiles/
+/media/
+
+# ===== 环境变量 / 密钥 =====
+.env
+.env.*
+*.pem
+secret_key.txt
+
+# ===== 编辑器 =====
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 打包/缓存 =====
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 注意：migrations/ 目录【要提交】，不要加进这里
